@@ -12,11 +12,11 @@ pipeline {
         stage('Set Up Python Environment') {
             steps {
                 bat '''
-                    python -m venv venv
-                    call venv\\Scripts\\activate
-                    pip install --upgrade pip
-                    pip install -r requirements.txt
-                '''
+    "C:\\Users\\Ahmed\\AppData\\Local\\Programs\\Python\\Python312\\python.exe" -m venv venv
+    call venv\\Scripts\\activate
+    python -m pip install --upgrade pip
+    python -m pip install -r requirements.txt
+'''
             }
         }
 
