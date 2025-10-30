@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    triggers {
+        cron('H 5 * * *')
+
+        githubPush()
+    }
+
     stages {
         stage('Clone Repository') {
             steps {
@@ -43,6 +49,16 @@ pipeline {
             steps {
                 echo 'Django app deployed successfully and pipeline finished!'
             }
+        }
+    }
+    post {
+        always {
+            echo 'Cleaning up workspace...'
+            cleanWs()
+            echo 'Pipeline finished successfully.'
+        }
+        failure {
+            echo 'Pipeline failed. Check logs for errors.'
         }
     }
 }
